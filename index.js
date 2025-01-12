@@ -22,7 +22,7 @@ const gamesContainer = document.getElementById("games-container");
 
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
-  
+   `<p>`Hi world`</p>`
 
    // Loop over each game in the games array
     for (let i = 0; i < GAMES_JSON.length; i++) {
@@ -53,7 +53,8 @@ function addGamesToPage(games) {
             <p>Pledged: ${GAMES_JSON.pledged}</p>
             <p>Goal :${GAMES_JSON.goal}</p>
             <p>Backers :${GAMES_JSON.backers}</p>
-            <img src="${GAMES_JSON.img}" class="game-img" alt="${GAMES_JSON.name}" ></p>
+            <img src="${GAMES_JSON.img}" class="game-img" alt="${GAMES_JSON.name} 
+            style= “width: 300px ; height= 200px; " ></p>
           `;
     
 
