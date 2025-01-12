@@ -8,7 +8,7 @@
 import GAMES_DATA from './games.js';
 
 // create a list of objects to store the data about the games using JSON.parse
-const GAMES_JSON = JSON.parse(GAMES_DATA)
+const GAMES_JSON = JSON.parse(GAMES_DATA);
 
 // remove all child elements from a parent element in the DOM
 function deleteChildElements(parent) {
@@ -17,26 +17,22 @@ function deleteChildElements(parent) {
     }
 }
 
-/*****************************************************************************
- * Challenge 3: Add data about each game as a card to the games-container
- * Skills used: DOM manipulation, for loops, template literals, functions
-*/
-
 // grab the element with the id games-container
 const gamesContainer = document.getElementById("games-container");
 
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
+  
 
    // Loop over each game in the games array
     for (let i = 0; i < GAMES_JSON.length; i++) {
         const GAMES_JSON = GAMES_JSON[i];
 
         // Create a new div for the game card
-        const gamesCard = document.createElement('div');
+        const gameCard = document.createElement('div');
 
         // create a new div element, which will become the game card
-        gamesCard.classList.add('game-card');
+        gameCard.classList.add('game-card');
         
         // Set the innerHTML of the game card
         // set the inner HTML using a template literal to display some info 
@@ -51,7 +47,7 @@ function addGamesToPage(games) {
 "backers": 0,
 "img": ""
 */
-        gamesCard.innerHTML = `
+        gameCard.innerHTML = `
             <h3>${GAMES_JSON.name}</h3>
             <p>${GAMES_JSON.description}</p>
             <p>pledged: ${GAMES_JSON.pledged}</p>
