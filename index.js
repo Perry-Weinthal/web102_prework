@@ -28,27 +28,39 @@ const gamesContainer = document.getElementById("games-container");
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
 
-    // loop over each item in the data
+   // Loop over each game in the games array
+    for (let i = 0; i < GAMES_JSON.length; i++) {
+        const GAMES_JSON = GAMES_JSON[i];
 
-    // Loop over each game in the games array
-    for (let i = 0; i < games.length; i++) {
         // Create a new div for the game card
+        const gamesCard = document.createElement('div');
+
         // create a new div element, which will become the game card
-        const gameCard = document.createElement('div');
-        gameCard.classList.add('game-card');
+        gamesCard.classList.add('game-card');
         
         // Set the innerHTML of the game card
         // set the inner HTML using a template literal to display some info 
         // about each game
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
-        gameCard.innerHTML = `
-            <img src="${games[i].img}" class="game-img" alt="${games[i].name}">
-            <h3>${games[i].name}</h3>
-            <p>${games[i].description}</p>
-        `;
+        /*
+"name": "",
+"description": "",
+"pledged": 0,
+"goal": 0,
+"backers": 0,
+"img": ""
+*/
+        gamesCard.innerHTML = `
+            <h3>${GAMES_JSON.name}</h3>
+            <p>${GAMES_JSON.description}</p>
+            <p>pledged: ${GAMES_JSON.pledged}</p>
+            <p>Goal :${GAMES_JSON.goal}</p>
+            <p>Backers :${GAMES_JSON.backers}</p>
+         `;
+    //  <img src="${GAMES_JSON.img}" class="game-img" alt="${GAMES_JSON.name}" ></p>
 
-        // Append the game card to the DOM
+
          // append the game to the games-container
         document.getElementById('games-container').appendChild(gameCard);
     }
@@ -56,7 +68,6 @@ function addGamesToPage(games) {
 
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
-// Call the function to add all games to the page
 addGamesToPage(GAMES_JSON);
 
 
