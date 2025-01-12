@@ -39,23 +39,23 @@ function addGamesToPage(games) {
         // about each game
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
-        /*
-"name": "",
-"description": "",
-"pledged": 0,
-"goal": 0,
-"backers": 0,
-"img": ""
-*/
+        /* from games.js
+                            "name": "",
+                            "description": "",
+                            "pledged": 0,
+                            "goal": 0,
+                            "backers": 0,
+                            "img": ""
+         */
         gameCard.innerHTML = `
             <h3>${GAMES_JSON.name}</h3>
             <p>${GAMES_JSON.description}</p>
-            <p>pledged: ${GAMES_JSON.pledged}</p>
+            <p>Pledged: ${GAMES_JSON.pledged}</p>
             <p>Goal :${GAMES_JSON.goal}</p>
             <p>Backers :${GAMES_JSON.backers}</p>
-         `;
-    //  <img src="${GAMES_JSON.img}" class="game-img" alt="${GAMES_JSON.name}" ></p>
-
+            <img src="${GAMES_JSON.img}" class="game-img" alt="${GAMES_JSON.name}" ></p>
+          `;
+    
 
          // append the game to the games-container
         document.getElementById('games-container').appendChild(gameCard);
