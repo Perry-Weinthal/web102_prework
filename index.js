@@ -30,34 +30,18 @@ function addGamesToPage(games) {
 
     // loop over each item in the data
 
-
-        // create a new div element, which will become the game card
-
-
-        // add the class game-card to the list
-
-
-        // set the inner HTML using a template literal to display some info 
-        // about each game
-        // TIP: if your images are not displaying, make sure there is space
-        // between the end of the src attribute and the end of the tag ("/>")
-
-
-        // append the game to the games-container
-
-}
-
-
-
-//   add more information about each game.
-function addGamesToPage(games) {
     // Loop over each game in the games array
     for (let i = 0; i < games.length; i++) {
         // Create a new div for the game card
+        // create a new div element, which will become the game card
         const gameCard = document.createElement('div');
         gameCard.classList.add('game-card');
         
         // Set the innerHTML of the game card
+        // set the inner HTML using a template literal to display some info 
+        // about each game
+        // TIP: if your images are not displaying, make sure there is space
+        // between the end of the src attribute and the end of the tag ("/>")
         gameCard.innerHTML = `
             <img src="${games[i].img}" class="game-img" alt="${games[i].name}">
             <h3>${games[i].name}</h3>
@@ -65,15 +49,17 @@ function addGamesToPage(games) {
         `;
 
         // Append the game card to the DOM
+         // append the game to the games-container
         document.getElementById('games-container').appendChild(gameCard);
     }
 }
 
+// call the function we just defined using the correct variable
+// later, we'll call this function using a different list of games
 // Call the function to add all games to the page
 addGamesToPage(GAMES_JSON);
 
-// call the function we just defined using the correct variable
-// later, we'll call this function using a different list of games
+
 
 
 /*************************************************************************************
