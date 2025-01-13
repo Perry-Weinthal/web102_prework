@@ -184,6 +184,24 @@ const descriptionContainer = document.getElementById("description-container");
 // create a string that explains the number of unfunded games using the ternary operator
 // create a new DOM element containing the template string and append it to the description container
 
+// Step 1: Sum the number of unfunded games
+const numUnfundedGames = GAMES_JSON.filter(({ pledged, goal }) => pledged < goal).length;
+
+// Step 2: Calculate total raised and construct template string
+//let totalRaised = GAMES_JSON.reduce((total, game) => total + game.pledged, 0);
+const descriptionText = `
+A total of $${totalRaised.toLocaleString()} has been raised for ${GAMES_JSON.length} games. 
+Currently, ${numUnfundedGames} game${numUnfundedGames === 1 ? '' : 's'} remain unfunded.
+`;
+
+// Step 3: Add the template string to the description container
+const paragraph = document.createElement("p");
+paragraph.textContent = descriptionText;
+descriptionContainer.appendChild(paragraph);
+//
+
+
+
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
