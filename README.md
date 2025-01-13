@@ -39,9 +39,10 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<img src='https://imgur.com/a/pCLptyL' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<img src='https://imgur.com/a/pCLptyL' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-https://drive.google.com/file/d/1uRcNgVFOJi0c_Ci4NRsNDSVNHF1JB12e/view?usp=drive_link
+//<img src='https://imgur.com/a/pCLptyL' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
+[Click here to view the video walkthrough](https://drive.google.com/file/d/1uRcNgVFOJi0c_Ci4NRsNDSVNHF1JB12e/view?usp=drive_link)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
