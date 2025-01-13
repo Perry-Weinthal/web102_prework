@@ -227,7 +227,16 @@ const [mostFundedGame, secondMostFundedGame] = sortedGames;
 console.log("Most funded game:", mostFundedGame.name);
 console.log("Second most funded game:", secondMostFundedGame.name);
 
+// Select the containers for the top two games
+// Create and append elements for the top-funded games
+const firstGameElement = document.createElement("p");
+firstGameElement.textContent = mostFundedGame.name;
 
+const secondGameElement = document.createElement("p");
+secondGameElement.textContent = secondMostFundedGame.name;
+
+firstGameContainer.appendChild(firstGameElement);
+secondGameContainer.appendChild(secondGameElement);
 
 
 
