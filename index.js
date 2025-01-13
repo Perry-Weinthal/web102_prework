@@ -209,14 +209,26 @@ descriptionContainer.appendChild(paragraph);
 
 const firstGameContainer = document.getElementById("first-game");
 const secondGameContainer = document.getElementById("second-game");
-
+/*
 const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
     return item2.pledged - item1.pledged;
 });
-
+*/
 // use destructuring and the spread operator to grab the first and second games
-
 // create a new element to hold the name of the top pledge game, then append it to the correct element
-
 // do the same for the runner up item
+// Sort games in descending order based on the amount pledged
+const sortedGames = [...GAMES_JSON].sort((a, b) => b.pledged - a.pledged);
+
+// Destructure to grab the top two most funded games
+const [mostFundedGame, secondMostFundedGame] = sortedGames;
+
+// Log their names to find the first word of each
+console.log("Most funded game:", mostFundedGame.name);
+console.log("Second most funded game:", secondMostFundedGame.name);
+
+
+
+
+
 
