@@ -238,6 +238,68 @@ secondGameElement.textContent = secondMostFundedGame.name;
 firstGameContainer.appendChild(firstGameElement);
 secondGameContainer.appendChild(secondGameElement);
 
+/************************************************************************************
+options features:
+*/
 
+/************************************************************************************
+ * Optional Feature: Search functionality
+ * Skills used: event listeners, array methods, DOM manipulation
+ */
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+function performSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+
+    if (query === "") {
+        // If the search query is empty, show all games
+        showAllGames();
+        return;
+    }
+    const filteredGames = GAMES_JSON.filter(game => 
+        game.name.toLowerCase().includes(query) ||
+        game.description.toLowerCase().includes(query)
+    );
+
+    if (filteredGames.length === 0) {
+        // Display a message when no games match the search
+        deleteChildElements(gamesContainer);
+        const noResultsMessage = document.createElement("p");
+        noResultsMessage.textContent = "No games found matching your search.";
+        gamesContainer.appendChild(noResultsMessage);
+    } else {
+        // Display the filtered games
+        deleteChildElements(gamesContainer);
+        addGamesToPage(filteredGames);
+    }
+
+    // Update the game count
+    updateGameCount(filteredGames.length);
+}
+
+// Function to update the game count display
+function updateGameCount(count) {
+    const gamesCard = document.getElementById("num-games");
+    gamesCard.innerHTML = count.toLocaleString();
+}
+
+// Add click event listener to the search button
+searchButton.addEventListener("click", performSearch);
+
+// Add keypress event listener to the search input for Enter key
+searchInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Prevent form submission
+        performSearch();
+    }
+});
+
+// Add input event listener for real-time search (optional)
+searchInput.addEventListener("input", () => {
+    if (searchInput.value.trim() === "") {
+        showAllGames();
+    }
+});
 
 
