@@ -39,7 +39,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<img src='https://imgur.com/a/xK17b4P' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/pCLptyL' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/pCLptyL" data-context="false" ><a href="imgur.com/a/pCLptyL"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 <!-- Replace this with whatever GIF tool you used! -->
