@@ -22,11 +22,11 @@ const gamesContainer = document.getElementById("games-container");
 
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
-   `<p>`Hi world`</p>`
+  
 
    // Loop over each game in the games array
     for (let i = 0; i < GAMES_JSON.length; i++) {
-        const GAMES_JSON = GAMES_JSON[i];
+        //const GAMES_JSON = GAMES_JSON[i];
 
         // Create a new div for the game card
         const gameCard = document.createElement('div');
@@ -47,17 +47,25 @@ function addGamesToPage(games) {
                             "backers": 0,
                             "img": ""
          */
+        /*
         gameCard.innerHTML = `
-            <h3>${GAMES_JSON.name}</h3>
-            <p>${GAMES_JSON.description}</p>
-            <p>Pledged: ${GAMES_JSON.pledged}</p>
-            <p>Goal :${GAMES_JSON.goal}</p>
-            <p>Backers :${GAMES_JSON.backers}</p>
-            <img src="${GAMES_JSON.img}" class="game-img" alt="${GAMES_JSON.name} 
+            <h3>${GAMES_JSON[i].name}</h3>
+            <p>${GAMES_JSON[i].description}</p>
+            <p>Pledged: ${GAMES_JSON[i].pledged.toLocaleString()}</p>
+            <p>Goal :${GAMES_JSON[i].goal.toLocaleString()}</p>
+            <p>Backers :${GAMES_JSON[i].backers.toLocaleString()}</p>
+            <img src="${GAMES_JSON[i].img}" class="game-img" alt="${GAMES_JSON[i].name} 
             style= “width: 300px ; height= 200px; " ></p>
-          `;
-    
-
+        `; */
+        gameCard.innerHTML = `
+            <h3>${games[i].name}</h3>
+            <p>${games[i].description}</p>
+            <p>Pledged: $${games[i].pledged.toLocaleString()}</p>
+            <p>Goal: $${games[i].goal.toLocaleString()}</p>
+            <p>Backers: ${games[i].backers}</p>
+            <img src="${games[i].img}" class="game-img" alt="${games[i].name}" style="width: 300px; height: 200px;" />
+        `;
+        
          // append the game to the games-container
         document.getElementById('games-container').appendChild(gameCard);
     }
@@ -66,8 +74,6 @@ function addGamesToPage(games) {
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
 addGamesToPage(GAMES_JSON);
-
-
 
 
 /*************************************************************************************
@@ -80,19 +86,32 @@ addGamesToPage(GAMES_JSON);
 const contributionsCard = document.getElementById("num-contributions");
 
 // use reduce() to count the number of total contributions by summing the backers
-
+const totalContributions = GAMES_JSON.reduce((total, game) => total + game.backers, 0);
 
 // set the inner HTML using a template literal and toLocaleString to get a number with commas
+contributionsCard.innerHTML = `$${totalContributions.toLocaleString()}`;
+
 
 
 // grab the amount raised card, then use reduce() to find the total amount raised
 const raisedCard = document.getElementById("total-raised");
 
+// Calculate total money pledged
+const totalRaised = GAMES_JSON.reduce((total, game) => total + game.pledged, 0);
+
 // set inner HTML using template literal
+raisedCard.innerHTML = `$${totalRaised.toLocaleString()}`;
+             console.log("totalRaised=", totalRaised.toLocaleString());
 
 
 // grab number of games card and set its inner HTML
 const gamesCard = document.getElementById("num-games");
+
+// Calculate and display total number of games
+const totalGames = GAMES_JSON.length;
+gamesCard.innerHTML = totalGames.toLocaleString();
+
+//  11800268DOODLE
 
 
 /*************************************************************************************
@@ -102,41 +121,56 @@ const gamesCard = document.getElementById("num-games");
 */
 
 // show only games that do not yet have enough funding
+
 function filterUnfundedOnly() {
-    deleteChildElements(gamesContainer);
+    const unfundedGames = GAMES_JSON.filter(({pledged, goal}) => pledged < goal);
 
-    // use filter() to get a list of games that have not yet met their goal
+    if (gamesContainer) {
+        deleteChildElements(gamesContainer);
+        addGamesToPage(unfundedGames);
+    }
 
-
-    // use the function we previously created to add the unfunded games to the DOM
-
+    console.log("Unfunded games:", unfundedGames);
+    return unfundedGames.length;
 }
 
+
 // show only games that are fully funded
+
 function filterFundedOnly() {
-    deleteChildElements(gamesContainer);
+    const fundedGames = GAMES_JSON.filter(({pledged, goal}) => pledged >= goal);
 
-    // use filter() to get a list of games that have met or exceeded their goal
+    if (gamesContainer) {
+        deleteChildElements(gamesContainer);
+        addGamesToPage(fundedGames);
+    }
 
-
-    // use the function we previously created to add unfunded games to the DOM
-
+    console.log("Funded games:", fundedGames);
+    return fundedGames.length;
 }
 
 // show all games
 function showAllGames() {
-    deleteChildElements(gamesContainer);
-
-    // add all games from the JSON data to the DOM
-
+    if (gamesContainer) {
+        deleteChildElements(gamesContainer);
+        addGamesToPage(GAMES_JSON);
+    }
+    return GAMES_JSON.length;
 }
-
 // select each button in the "Our Games" section
 const unfundedBtn = document.getElementById("unfunded-btn");
 const fundedBtn = document.getElementById("funded-btn");
 const allBtn = document.getElementById("all-btn");
 
 // add event listeners with the correct functions to each button
+unfundedBtn.addEventListener("click", filterUnfundedOnly);
+fundedBtn.addEventListener("click", filterFundedOnly);
+allBtn.addEventListener("click", showAllGames);
+
+// Initial display of all games
+showAllGames();
+
+
 
 
 /*************************************************************************************
@@ -146,13 +180,8 @@ const allBtn = document.getElementById("all-btn");
 
 // grab the description container
 const descriptionContainer = document.getElementById("description-container");
-
 // use filter or reduce to count the number of unfunded games
-
-
 // create a string that explains the number of unfunded games using the ternary operator
-
-
 // create a new DOM element containing the template string and append it to the description container
 
 /************************************************************************************
