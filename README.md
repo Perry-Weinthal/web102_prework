@@ -39,7 +39,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-[Click here to view the video walkthrough](https://drive.google.com/file/d/1uRcNgVFOJi0c_Ci4NRsNDSVNHF1JB12e/view?usp=drive_link)
+[Click here to view the video walkthrough- version1]https://github.com/Perry-Weinthal/web102_prework/blob/main/pre-work_stack.gif
+[Click here to view the video walkthrough - painful version](https://drive.google.com/file/d/1uRcNgVFOJi0c_Ci4NRsNDSVNHF1JB12e/view?usp=drive_link)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
